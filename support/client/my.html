@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Просмотр обращения</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <!-- Меню (как на главной странице клиента) -->
+            <div class="sidebar-header">
+                <h3>Меню</h3>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="client.html"><i class="fa fa-home"></i> Главная</a></li>
+                    <li><a href="make.html"><i class="fa fa-plus"></i> Создать обращение</a></li>
+                    <li><a href="#"><i class="fa fa-sign-out"></i> Выйти</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Просмотр обращения #123</h1>
+            </header>
+
+            <section class="content">
+                <h2>Детали обращения</h2>
+                <div class="ticket-details">
+                    <p><b>Категория:</b> Проблема с доступом</p>
+                    <p><b>Описание:</b> Не могу войти в свой аккаунт.  Забыл пароль.</p>
+                    <p><b>Статус:</b> <span class="ticket-status in-progress">В обработке</span></p>
+                    <p><b>Дата создания:</b> 2024-01-26</p>
+                </div>
+
+                <h3>Комментарии</h3>
+                <div class="comments">
+                    <div class="comment">
+                        <span class="comment-author">Клиент:</span>
+                        <p class="comment-text">Пожалуйста, помогите восстановить доступ!</p>
+                        <span class="comment-date">2024-01-26 10:00</span>
+                    </div>
+                    <div class="comment">
+                        <span class="comment-author">Сотрудник поддержки:</span>
+                        <p class="comment-text">Мы работаем над вашей проблемой.  Отправили вам ссылку для восстановления пароля на почту.</p>
+                        <span class="comment-date">2024-01-26 11:00</span>
+                    </div>
+                </div>
+
+                <h3>Добавить комментарий</h3>
+                <form id="addCommentForm">
+                    <div class="form-group">
+                        <textarea id="commentText" name="commentText" rows="3" placeholder="Ваш комментарий"></textarea>
+                    </div>
+                    <button type="submit" class="button">Отправить комментарий</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
