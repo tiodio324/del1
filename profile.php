@@ -91,6 +91,29 @@ if (!empty($orders)) {
     }
 }
 
+$supportTickets = [];
+
+$supportStmt = $conn->prepare("
+    SELECT
+        id,
+        order_id,
+        subject,
+        status,
+        created_at
+    FROM support_tickets
+    WHERE user_id = ?
+    ORDER BY created_at DESC
+");
+$supportStmt->bind_param("i", $user_id);
+$supportStmt->execute();
+$result = $supportStmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $supportTickets[] = $row;
+}
+
+$supportStmt->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -101,7 +124,7 @@ if (!empty($orders)) {
     <title>TimCockStore - Личный кабинет</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="margin-bottom: 200px;">
 
 <header>
     <div class="logo">
@@ -128,6 +151,9 @@ if (!empty($orders)) {
         <p><strong>ID:</strong> <?= htmlspecialchars($user['id']) ?></p>
         <p><strong>Имя:</strong> <?= htmlspecialchars($user['name']) ?></p>
         <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
+
+    <h4><a href="supportL.php">Мои обращения в поддержку</a></h4>
+
     </section>
 
     <h2>Мои заказы</h2>
@@ -159,11 +185,16 @@ if (!empty($orders)) {
                     </div>
                 <?php else: ?>
                     <p>Нет данных о составе заказа.</p>
+                    <a href="support-create.php?order_id=<?= $order['order_id'] ?>" class="button">
+                        Обратиться в поддержку
+                    </a>
                 <?php endif; ?>
                 <hr>
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
+
+    
 
     <a href="logout.php" class="button">Выйти</a>
 </main>

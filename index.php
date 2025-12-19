@@ -48,7 +48,7 @@ $conn->close();
     <title>TimCockStore - Главная</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="margin-bottom: 200px;">
     <header>
         <div class="logo">
             <a href="index.php">TimCockStore</a>
@@ -87,7 +87,7 @@ $conn->close();
                         <img src="img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                         <p>Цена: <?php echo htmlspecialchars($product['price']); ?> руб.</p>
-                        <button>В корзину</button>
+                        <?php echo '<a href="add_to_cart.php?id='.$product['id'].'" class="btn-buy">В корзину</a>'; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -101,7 +101,7 @@ $conn->close();
                         <img src="img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                         <p>Цена: <?php echo htmlspecialchars($product['price']); ?> руб.</p>
-                        <button>В корзину</button>
+                        <?php echo '<a href="add_to_cart.php?id='.$product['id'].'" class="btn-buy">В корзину</a>'; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

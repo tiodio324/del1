@@ -559,3 +559,9 @@ input:focus, textarea:focus, select:focus {
     text-align: center;
     margin: 20px 0;
 }
+.support-ticket {
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}

@@ -13,11 +13,6 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function showCheckout(): View
     {
         $cart = session()->get('cart', []);

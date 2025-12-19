@@ -57,7 +57,7 @@ if (!empty($cartItems)) {
     <title>TimCockStore - Корзина</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="margin-bottom: 200px;">
 
 <header>
     <div class="logo">

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SupportTicketController;
 use Illuminate\Support\Facades\Route;
 
 // Home page
@@ -35,6 +37,16 @@ Route::middleware('auth')->group(function () {
     
     // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+});
+
+// Admin routes (Manager only)
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::post('/users/role', [AdminController::class, 'updateUserRole'])->name('admin.update-role');
+    Route::get('/users/{id}/delete', [AdminController::class, 'deleteUser'])->name('admin.delete-user');
+    Route::get('/support-tickets', [SupportTicketController::class, 'adminIndex'])->name('admin.support-tickets');
+    Route::post('/support-tickets/assign', [SupportTicketController::class, 'assign'])->name('admin.assign-ticket');
 });
 
 // Manager dashboard

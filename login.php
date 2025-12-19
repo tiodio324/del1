@@ -66,10 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 header("Location: index.php"); // Change the redirect URL as needed
                                 break;
                             case 'support':
-                                header("Location: support.php"); // Change the redirect URL as needed
+                                header("Location: support-dashboard.php"); // Change the redirect URL as needed
                                 break;
                             case 'manager':
-                                header("Location: manager.php"); // Change the redirect URL as needed
+                                header("Location: admin/admin.php"); // Change the redirect URL as needed
                                 break;
                             default:
                                 header("Location: index.php"); // Or a default page if the role is not recognized

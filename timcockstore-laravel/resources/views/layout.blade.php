@@ -17,9 +17,9 @@
                 <li><a href="{{ route('cart.index') }}">Корзина</a></li>
                 @auth
                     @if(auth()->user()->role === 'manager')
-                        <li><a href="{{ route('manager.dashboard') }}">Управление</a></li>
+                        <li><a href="{{ route('admin.dashboard') }}">🔧 Админка</a></li>
                     @elseif(auth()->user()->role === 'support')
-                        <li><a href="{{ route('support.dashboard') }}">Поддержка</a></li>
+                        <li><a href="{{ route('support.dashboard') }}">🎧 Поддержка</a></li>
                     @endif
                     <li><a href="{{ route('profile') }}">Личный кабинет</a></li>
                     <li>

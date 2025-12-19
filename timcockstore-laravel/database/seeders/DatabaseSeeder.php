@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SupportTicket;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,21 +20,21 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Создание тестовых пользователей
-        User::create([
+        $manager = User::create([
             'name' => 'Admin Manager',
             'email' => 'manager@example.com',
             'password' => Hash::make('password'),
             'role' => 'manager',
         ]);
 
-        User::create([
+        $support = User::create([
             'name' => 'Support User',
             'email' => 'support@example.com',
             'password' => Hash::make('password'),
             'role' => 'support',
         ]);
 
-        User::create([
+        $client = User::create([
             'name' => 'Test Client',
             'email' => 'client@example.com',
             'password' => Hash::make('password'),
@@ -78,5 +79,30 @@ class DatabaseSeeder extends Seeder
         foreach ($products as $product) {
             Product::create($product);
         }
+
+        // Создание тестовых обращений в поддержку
+        SupportTicket::create([
+            'user_id' => $client->id,
+            'support_id' => $support->id,
+            'subject' => 'Проблема с доставкой',
+            'description' => 'Мой заказ не пришел вовремя. Можно ли его отследить?',
+            'status' => 'in_progress',
+        ]);
+
+        SupportTicket::create([
+            'user_id' => $client->id,
+            'support_id' => null, // Не назначено
+            'subject' => 'Вопрос о гарантии',
+            'description' => 'Сколько лет гарантия на iPhone 14?',
+            'status' => 'open',
+        ]);
+
+        SupportTicket::create([
+            'user_id' => $client->id,
+            'support_id' => $support->id,
+            'subject' => 'Возврат товара',
+            'description' => 'Хочу вернуть товар, он не подходит по размеру',
+            'status' => 'closed',
+        ]);
     }
 }

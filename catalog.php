@@ -45,7 +45,7 @@ $conn->close();
     <title>TimCockStore - Каталог</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body style="margin-bottom: 200px;">
     <header>
         <div class="logo">
             <a href="index.php">TimCockStore</a>
